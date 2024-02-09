@@ -1,14 +1,9 @@
 #category-card{
-    height: 250px;
-    width: 250px;
     background-color: black;
     border-radius: 20px;
     color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: x-large;
-    font-style: oblique;
     cursor: pointer;
-    margin: 20px;
 }

@@ -1,18 +1,17 @@
 #card{
-    height: 300px;
-    width: 240px;
+    height: 200px;
+    width: 100%;
     background-color: white;
     border-radius: 20px;
     border: solid black 2px;
-    margin: 30px;
+    margin: 20px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
 }
 
-#card img{
-    height: 150px;
+#card div img{
     border-radius: 5px;
     margin: 20px;
 }
