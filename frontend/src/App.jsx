@@ -7,9 +7,10 @@ import Jewelery from './pages/Jewelery'
 import Men from './pages/Men'
 import Women from './pages/Women'
 import Electronics from './pages/Electronics'
-import LoginPage from './pages/LoginPage'
+import LoginPage from './pages/_auth/LoginPage'
 import Hamburger from './components/Hamburger'
 import UnderMaintenance from './pages/UnderMaintenance'
+import SignUpPage from './pages/_auth/SignUpPage'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/' Component={Intro}></Route>
           <Route path='/login' Component={LoginPage}></Route>
+          <Route path='/signup' Component={SignUpPage}></Route>
           <Route path="/jewelery" Component={Jewelery}></Route>
           <Route path="/electronics" Component={Electronics}></Route>
           <Route path="/men's clothing" Component={Men}></Route>
