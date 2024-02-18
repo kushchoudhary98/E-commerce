@@ -1,7 +1,13 @@
-import { useEffect } from "react"
+import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import axios from 'axios';
+import userContext  from "../../context/user/UserContext";
 
 export default function LoginPage() {
+    const [loading, setLoading] = useState(false);
+    const [verified, setVerified] = useState(false);
+    const state = useContext(userContext);
+
     const port = "9000"
     let link = document.location.href
     link = link.slice(0,-10) + port + "/login"
@@ -15,6 +21,29 @@ export default function LoginPage() {
       }
     })
 
+    const loginHandler = (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const passwd = e.target.password.value;
+
+      setLoading(true);
+
+      axios.post(link,{
+        username: email,
+        password: passwd
+      }).then((res) => {
+        if(res.data['verified']){
+          setLoading(false);
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+          window.location.href = '/profile';
+        }
+        else {
+          document.getElementById('verification').style.display = 'block';
+          setLoading(false);
+        }
+      })
+    }
+
     return (
       <>
         <div className="flex min-h-full h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
@@ -26,15 +55,15 @@ export default function LoginPage() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action={link} method="post">
+            <form className="space-y-6" onSubmit={loginHandler} method="post">
               <div>
-                <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address / User Name
                 </label>
                 <div className="mt-2">
                   <input
-                    id="username"
-                    name="username"
+                    id="email"
+                    name="email"
                     type="text"
                     autoComplete="email"
                     required
@@ -67,11 +96,12 @@ export default function LoginPage() {
               </div>
   
               <div>
+                <p id="verification" className='text-red-600 hidden'>*Invalid credentials. Please try again.</p>
                 <button
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  Log in
+                  {loading?"Logging in ...":"Log in"}
                 </button>
               </div>
             </form>

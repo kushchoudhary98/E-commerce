@@ -1,7 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 export default function SignUpPage() {
+    const [loading, setLoading] = useState(false);
+
     const port = "9000"
     let link = document.location.href
     link = link.slice(0, -11) + port + "/signup"
@@ -15,6 +18,34 @@ export default function SignUpPage() {
         }
     })
 
+    const signupHandler = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const passwd = e.target.password.value;
+
+        setLoading(true);
+
+        axios.post(link, {
+            name: name,
+            email: email,
+            password: passwd
+        }).then((res) => {
+            if (res.data.status == 'error') { 
+                window.alert('An error occured.');
+            }
+            if (res.data.status == 'exists') {
+                document.getElementById('verification').style.display = 'block';
+                setLoading(false);
+            }
+            if (res.data.status == 'success') {
+                setLoading(false);
+                localStorage.setItem('user', JSON.stringify(res.data.user));
+                window.location.href = '/profile';
+            }
+        })
+    }
+
     return (
         <>
             <div className="flex min-h-full h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
@@ -26,7 +57,7 @@ export default function SignUpPage() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action={link} method="post">
+                    <form className="space-y-6" method="post" onSubmit={signupHandler}>
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                                 Name
@@ -77,11 +108,12 @@ export default function SignUpPage() {
                         </div>
 
                         <div>
+                            <p id="verification" className='text-red-600 hidden'>*Email already exists. Try another email</p>
                             <button
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Sign up
+                                {loading ? "Signing up ..." : "Sign Up"}
                             </button>
                         </div>
                     </form>

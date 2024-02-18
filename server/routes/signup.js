@@ -20,6 +20,7 @@ async function addUser(name, email, passwd, res) {
     await bcrypt.hash(passwd, saltRounds, async (err, encrypted) => {
         if (err) {
             console.log("error hashing: ", err);
+            res.send({status: 'error'});
             return;
         }
         try {
@@ -38,11 +39,11 @@ async function addUser(name, email, passwd, res) {
             if (checkUnique == null) {
                 await col.insertOne(user);
                 console.log("Success");
-                res.send("Done")
+                res.send({status: 'success', user: user});
             }
             else {
                 console.log("User Already exists.");
-                res.redirect((link+"/login"))
+                res.send({status: 'exists'});
             }
             await client.close();
             return;
@@ -50,6 +51,7 @@ async function addUser(name, email, passwd, res) {
         catch(err) {
             console.log("error in try-catch")
             await client.close();
+            res.send({status: 'error'})
             return;
         }
     }

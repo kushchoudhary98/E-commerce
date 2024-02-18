@@ -21,11 +21,18 @@ const client = new MongoClient(uri, {
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.post('/',
-  passport.authenticate("local", {
-    successRedirect: link_,
-    failureRedirect: link_login,
-  })
+router.post('/', function(req, res, next) {
+  passport.authenticate('local', (err, user, info, status) => {
+    if(err) {console.log('Error authenticating user: ', err);}
+    if(!user) {
+      res.send({verified: false});
+    }
+    else {
+      res.send({verified: true, user: user});
+
+    }
+  })(req, res, next);
+}
 );
 
 passport.use(
@@ -57,7 +64,7 @@ passport.use(
             }
             else {
               console.log("Not Verified");
-              return (null, false);
+              return cb(null, false);
             }
           });
         }
