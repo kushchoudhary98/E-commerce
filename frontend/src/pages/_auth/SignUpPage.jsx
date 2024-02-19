@@ -20,14 +20,18 @@ export default function SignUpPage() {
 
     const signupHandler = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
+        const firstname = e.target.firstname.value;
+        const lastname = e.target.lastname.value;
         const email = e.target.email.value;
         const passwd = e.target.password.value;
 
         setLoading(true);
 
         axios.post(link, {
-            name: name,
+            name: {
+                first: firstname,
+                last: lastname
+            },
             email: email,
             password: passwd
         }).then((res) => {
@@ -59,13 +63,27 @@ export default function SignUpPage() {
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form className="space-y-6" method="post" onSubmit={signupHandler}>
                         <div>
-                            <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
-                                Name
+                            <label htmlFor="firstname" className="block text-sm font-medium leading-6 text-gray-900">
+                                First Name
                             </label>
                             <div className="mt-2">
                                 <input
-                                    id="name"
-                                    name="name"
+                                    id="firstname"
+                                    name="firstname"
+                                    type="text"
+                                    required
+                                    className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <label htmlFor="lastname" className="block text-sm font-medium leading-6 text-gray-900">
+                                Last Name
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="lastname"
+                                    name="lastname"
                                     type="text"
                                     required
                                     className="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

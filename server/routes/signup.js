@@ -16,7 +16,7 @@ const client = new MongoClient(uri, {
     }
 });
 
-async function addUser(name, email, passwd, res) {
+async function addUser(firstname, lastname, email, passwd, res) {
     await bcrypt.hash(passwd, saltRounds, async (err, encrypted) => {
         if (err) {
             console.log("error hashing: ", err);
@@ -31,7 +31,10 @@ async function addUser(name, email, passwd, res) {
             const col = db.collection("users")
 
             const user = {
-                "name": name,
+                "name": {
+                    'first': firstname,
+                    'last': lastname
+                },
                 "email": email,
                 "passwd": encrypted
             }
@@ -60,12 +63,13 @@ async function addUser(name, email, passwd, res) {
 
 router.post('/', async function (req, res, next) {
     console.log("Adding user")
-    const name = req.body.name;
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
     const email = req.body.email;
     const passwd = req.body.password;
 
     console.log(name)
-    await addUser(name, email, passwd, res);
+    await addUser(firstname, lastname, email, passwd, res);
 });
 
 module.exports = router;
