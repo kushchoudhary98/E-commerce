@@ -63,12 +63,12 @@ async function addUser(firstname, lastname, email, passwd, res) {
 
 router.post('/', async function (req, res, next) {
     console.log("Adding user")
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
+    const firstname = req.body.name.first;
+    const lastname = req.body.name.last;
     const email = req.body.email;
     const passwd = req.body.password;
 
-    console.log(name)
+    console.log(firstname);
     await addUser(firstname, lastname, email, passwd, res);
 });
 

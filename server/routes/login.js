@@ -29,7 +29,6 @@ router.post('/', function(req, res, next) {
     }
     else {
       res.send({verified: true, user: user});
-
     }
   })(req, res, next);
 }
@@ -47,8 +46,8 @@ passport.use(
       await col.findOne({ "email": username })
         .then(user => {
           if (user == null) {
-            res.send("user not found")
-            return;
+            console.log("User does not exist.")
+            return cb(null, null);
           }
 
           const hash = user["passwd"];

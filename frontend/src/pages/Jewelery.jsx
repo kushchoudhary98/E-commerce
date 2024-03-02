@@ -5,7 +5,7 @@ import { ColorRing } from 'react-loader-spinner'
 
 export default function Jewelery() {
     const [data, setData] = useState([])
-    const [load, setLoad] = useState(false)
+    const [loader, setLoader] = useState(false)
 
     useEffect(() => {
         async function getData() {
@@ -13,7 +13,7 @@ export default function Jewelery() {
                 .then(res => res.json())
                 .then(json => {
                     setData(json)
-                    setLoad(true)
+                    setLoader(true)
                 })
         }
         getData()
@@ -22,7 +22,7 @@ export default function Jewelery() {
     return (
         <div id='category-page'>
             <div id="cards" className='md:w-9/12 w-11/12 mt-[64px] lg:mt-[100px]'>
-                {load ? data.map((item) => {
+                {loader ? data.map((item) => {
                     return <Card item={item}></Card>
                 }) :
                     <ColorRing

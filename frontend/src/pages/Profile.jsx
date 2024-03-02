@@ -38,20 +38,20 @@ export default function Profile() {
                             <div className="flex flex-row flex-wrap justify-between">
                                 <div className="flex flex-col sm:w-2/5 w-full min-w-[210px] mr-2">
                                     <label htmlFor="firstname" className='flex items-center mb-2 ml-4 text-lg font-medium text-indigo-900 min-w-[305px]'>First Name</label>
-                                    <input name="firstname" value={user.name.first} className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
+                                    <input name="firstname" value={user.name.first} readOnly className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
                                 </div>
                                 <div className="flex flex-col mt-6 sm:mt-0 sm:w-2/5 w-full min-w-[210px]">
                                     <label htmlFor="lastname" className='flex items-center mb-2 ml-4 text-lg font-medium text-indigo-900 min-w-[305px]'>Last Name</label>
-                                    <input name="lastname" value={user.name.last} className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
+                                    <input name="lastname" value={user.name.last} readOnly className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
                                 </div>
                             </div>
                             <label htmlFor="username" className='mt-6 mb-2 ml-4 text-lg font-medium text-indigo-900'>User Name</label>
-                            <input name="username" value='' className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
+                            <input name="username" value='' readOnly className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
                             <hr className="border-[1px] border-zinc-300 mb-8 ml-4 w-full mt-9"></hr>
                             <label htmlFor="email" className='mt-6 mb-2 ml-4 text-lg font-medium text-indigo-900'>Email Address</label>
-                            <input name="email" value={user.email} className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
+                            <input name="email" value={user.email} readOnly className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
                             <label htmlFor="phone" className='mt-6 mb-2 ml-4 text-lg font-medium text-indigo-900'>Phone Number</label>
-                            <input name="phone" value='' className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
+                            <input name="phone" value='' readOnly className='text-zinc-600 ml-4 border-2 bg-white p-1 pl-2 rounded-md w-full'></input>
                         </div>
                         <button onClick={logoutHandler} type="button" className='flex justify-center items-center m-6 bg-blue-600 p-3 h-10 w-28 text-white rounded-lg'>Log out</button>
                     </div>
