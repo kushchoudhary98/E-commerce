@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
-import toast from 'react-toastify';
+import { toast } from 'react-toastify';
 import bg from '../../assets/signup-bg.jpg'
 import logo from '../../assets/logo-short.png'
 
