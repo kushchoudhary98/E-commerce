@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function CartItem(props) {
-    let link = 'http://localhost:9000/removeitem'
+    let link = 'https://e-commerce-backend-uwqv.onrender.com/removeitem'
     let user = JSON.parse(localStorage.getItem('user'));
 
     const removeItemHandler = async() => {

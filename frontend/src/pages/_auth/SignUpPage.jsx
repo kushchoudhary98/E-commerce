@@ -7,9 +7,7 @@ import logo from '../../assets/logo-short.png'
 export default function SignUpPage() {
     const [loading, setLoading] = useState(false);
 
-    const port = "9000"
-    let link = document.location.href
-    link = link.slice(0, -11) + port + "/signup"
+    const link = "https://e-commerce-backend-uwqv.onrender.com/signup"
 
     useEffect(() => {
         if (screen.width > 768) return;

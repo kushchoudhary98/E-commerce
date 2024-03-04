@@ -2,7 +2,7 @@ import MiddleCard from "./MiddleCard";
 import { useState, useEffect } from "react";
 
 export default function Middle() {
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         const temp = []

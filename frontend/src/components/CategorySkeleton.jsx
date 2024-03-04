@@ -4,7 +4,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 export default function CategorySkeleton() {
   return (
     <div className='flex flex-col'>
-        <Skeleton className='lg:w-80 md:w-36 sm:w-36 w-[120px] sm:h-[200px] h-80 m-4 p-2 rounded-lg'/>
+        <Skeleton className='lg:w-80 md:w-80 sm:w-80 w-[80vw] sm:h-[200px] h-80 m-4 p-2 rounded-lg'/>
         <div className='flex flex-col justify-between'>
             <div>
                 <Skeleton className='m-4 p-0.5 w-80 rounded-lg'></Skeleton>

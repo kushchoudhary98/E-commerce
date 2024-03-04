@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from "react";
-
 export default function OrderSummary(props) {
-    
+
+    let subtotal = Math.floor(props.price * 100) / 100;
     let shipcharge = 5.00;
     if(props.price == 0){
         shipcharge = 0.0;
@@ -13,7 +12,7 @@ export default function OrderSummary(props) {
             <p className='text-2xl m-2 my-5 font-medium'>Order summary</p>
             <div className='flex m-2 my-3 justify-between items-center'>
                 <span>Subtotal</span>
-                <span className='font-semibold'>${props.price}</span>
+                <span className='font-semibold'>${subtotal}</span>
             </div>
             <hr></hr>
             <div className='flex m-2 my-3 justify-between items-center'>

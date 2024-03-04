@@ -10,9 +10,7 @@ export default function LoginPage() {
     const [verified, setVerified] = useState(false);
     const state = useContext(userContext);
 
-    const port = "9000"
-    let link = document.location.href
-    link = link.slice(0,-10) + port + "/login"
+    const link = "https://e-commerce-backend-uwqv.onrender.com/login"
 
     useEffect(() => {
       if(screen.width > 768) return;

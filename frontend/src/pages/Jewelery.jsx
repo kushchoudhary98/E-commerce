@@ -22,7 +22,7 @@ export default function Jewelery() {
 
     return (
         <div id='category-page'>
-            <div id="cards" className='flex flex-wrap gap-5 md:w-screen px-5 mt-[100px] lg:mt-[100px]'>
+            <div id="cards" className='flex flex-wrap flex-col sm:flex-row gap-5 md:w-screen px-5 mt-[100px] lg:mt-[100px]'>
                 {
                     loader ? data.map((item) => {
                         return <Card item={item}></Card>

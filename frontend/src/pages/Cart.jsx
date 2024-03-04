@@ -6,7 +6,7 @@ import OrderSummary from "./components/OrderSummary";
 import CartSkeleton from "./components/CartSkeleton";
 
 export default function Cart() {
-    let link = "http://localhost:9000/getcart"
+    let link = "https://e-commerce-backend-uwqv.onrender.com/getcart"
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
