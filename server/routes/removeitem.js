@@ -1,10 +1,6 @@
 var express = require('express');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 var router = express.Router();
-var bcrypt = require('bcrypt')
-
-let saltRounds = 5;
-let link = "http://localhost:5173"
 
 const uri = "mongodb+srv://kushchoudhary8430:ForTesting8430@cluster-kc.js7vwme.mongodb.net/?retryWrites=true&w=majority";
 
@@ -16,11 +12,11 @@ const client = new MongoClient(uri, {
     }
 });
 
-router.post('/', async function (req, res, next) {
-    console.log("Adding item")
+router.put('/', async function (req, res, next) {
+    console.log("Removing item")
     const item = req.body.item;
     const email = req.body.email;
-    const quantity = req.body.quantity;
+    console.log(item);
     console.log(email);
 
     try{
@@ -32,9 +28,9 @@ router.post('/', async function (req, res, next) {
 
         await col.updateOne({email: email}, 
             {
-                $addToSet: {cart: {item: item, quantity: quantity}}
+                $pull: {cart: {item: item}}
             });
-        console.log('Item Added');
+        console.log('Item Removed');
         await client.close();
         res.send();
     }

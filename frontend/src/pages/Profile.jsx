@@ -19,7 +19,7 @@ export default function Profile() {
     return (
         <>
             <div className="flex justify-center items-center w-screen lg:mt-[93px] md:mt-[64px] sm:mt-[72px] mt-[60px] border-t-[2px]">
-                <div className="flex justify-center text-black w-4/5 bg-orange-50 mb-5 pb-8 pr-7 lg:mt-5 md:mt-3 sm:mt-3 mt-3 rounded-xl">
+                <div className="flex justify-center text-black w-4/5 bg-gray-50 mb-5 pb-8 pr-7 lg:mt-5 md:mt-3 sm:mt-3 mt-3 rounded-xl">
                     <div className='md:mt-10 lg:mt-10 mt-8 w-11/12 flex flex-col'>
                         <h1 className='text-slate-700 text-2xl font-medium mb-2'>User Profile</h1>
                         <hr className="border-[1px] border-zinc-300 mb-8 w-1/4"></hr>

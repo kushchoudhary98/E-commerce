@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import bg from '../../assets/signup-bg.jpg'
+import logo from '../../assets/logo-short.png'
 
 export default function SignUpPage() {
     const [loading, setLoading] = useState(false);
@@ -35,7 +37,7 @@ export default function SignUpPage() {
             email: email,
             password: passwd
         }).then((res) => {
-            if (res.data.status == 'error') { 
+            if (res.data.status == 'error') {
                 window.alert('An error occured.');
             }
             if (res.data.status == 'exists') {
@@ -51,10 +53,15 @@ export default function SignUpPage() {
     }
 
     return (
-        <>
-            <div className="flex min-h-full h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
+        <div className='flex fixed'>
+            <div className='w-2/5 h-screen hidden lg:flex justify-center items-center'>
+                <img src={bg} className='bg-cover object-cover' style={{ aspectRatio: 9 / 16 }}></img>
+            </div>
+            <div className="flex min-h-full h-screen w-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-
+                    <Link to='/'>
+                        <img class="mx-auto h-10 w-auto" src={logo} alt="Fashion Store"></img>
+                    </Link>
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Create a new account
                     </h2>
@@ -144,6 +151,6 @@ export default function SignUpPage() {
                     </p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

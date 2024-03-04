@@ -36,7 +36,8 @@ async function addUser(firstname, lastname, email, passwd, res) {
                     'last': lastname
                 },
                 "email": email,
-                "passwd": encrypted
+                "passwd": encrypted,
+                "cart": []
             }
             const checkUnique = await col.findOne({ "email": email });
             if (checkUnique == null) {

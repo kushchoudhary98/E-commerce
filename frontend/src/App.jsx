@@ -14,6 +14,7 @@ import SignUpPage from './pages/_auth/SignUpPage'
 import UserState from './context/user/UserState'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
+import Cart from './pages/Cart'
 
 function App() {
 
@@ -26,14 +27,15 @@ function App() {
             <Route path='/' Component={Home}>
               <Route index Component={Intro}></Route>
               <Route path='/profile' Component={Profile}></Route>
+              <Route path='/cart' Component={Cart}></Route>
               <Route path="/jewelery" Component={Jewelery}></Route>
               <Route path="/electronics" Component={Electronics}></Route>
               <Route path="/men's clothing" Component={Men}></Route>
               <Route path="/women's clothing" Component={Women}></Route>
               <Route path='/maintenance' Component={UnderMaintenance}></Route>
             </Route>
-            <Route path='login' Component={LoginPage}></Route>
-            <Route path='signup' Component={SignUpPage}></Route>
+            <Route path='/login' Component={LoginPage}></Route>
+            <Route path='/signup' Component={SignUpPage}></Route>
           </Routes>
         </div>
       </BrowserRouter>

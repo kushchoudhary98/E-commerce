@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios';
 import userContext  from "../../context/user/UserContext";
+import logo from '../../assets/logo-short.png'
+import bg from '../../assets/login-bg2.jpg'
 
 export default function LoginPage() {
     const [loading, setLoading] = useState(false);
@@ -45,10 +47,15 @@ export default function LoginPage() {
     }
 
     return (
-      <>
-        <div className="flex min-h-full h-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
+      <div className='flex fixed'>
+        <div className='h-screen w-2/5 hidden lg:flex justify-center items-center'>
+          <img src={bg} className='bg-cover object-cover' style={{aspectRatio:9/16}}></img>
+        </div>
+        <div className="flex min-h-full h-screen w-screen flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            
+            <Link to='/'>
+              <img class="mx-auto h-10 w-auto" src={logo} alt="Fashion Store"></img>
+            </Link>
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               Log in to your account
             </h2>
@@ -114,7 +121,7 @@ export default function LoginPage() {
             </p>
           </div>
         </div>
-      </>
+      </div>
     )
   }
   
