@@ -13,9 +13,7 @@ export default function SignUpPage() {
     useEffect(() => {
         if (screen.width > 768) return;
         else {
-            document.getElementById("hamburger").style.right = "-300px"
-            document.getElementById("ham-close").style.display = "none"
-            document.getElementById("ham-open").style.display = "block"
+            document.getElementById("hamburger").style.right = "-300px";
         }
     })
 
@@ -46,7 +44,9 @@ export default function SignUpPage() {
             if (res.data.status == 'success') {
                 setLoading(false);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
-                navigate('/profile');
+                const user = JSON.parse(localStorage.getItem('user'));
+                toast.info('Hello, ' + user.name.first);
+                navigate('/');
             }
         })
     }

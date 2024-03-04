@@ -1,29 +1,32 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import CartItem from "./components/CartItem";
 import OrderSummary from "./components/OrderSummary";
 import CartSkeleton from "./components/CartSkeleton";
 
 export default function Cart() {
+    const navigate = useNavigate();
     let link = "https://e-commerce-backend-uwqv.onrender.com/getcart"
     const user = JSON.parse(localStorage.getItem('user'));
+    const [render, setRender] = useState(false);
 
     if (!user) {
-        window.location.href = '/login';
+        navigate('login');
     }
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
 
     useEffect(() => {
+        setLoading(true);
         axios.post(link, {
             email: user.email
         }).then(res => {
             setData(res.data);
             setLoading(false);
         })
-    }, []);
+    }, [render]);
 
     return (
         <div>
@@ -36,7 +39,7 @@ export default function Cart() {
                             loading ? <CartSkeleton />
                                 : (data.cart.length == 0) ? 'Add items to cart'
                                     : data.cart.map((item) => {
-                                        return (<CartItem item={item} />);
+                                        return (<CartItem item={{item, render, setRender}} />);
                                     })
                         }
                     </ul>

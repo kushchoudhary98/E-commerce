@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import userContext  from "../../context/user/UserContext";
 import logo from '../../assets/logo-short.png'
 import bg from '../../assets/login-bg2.jpg'
+import { ToastContainer, toast } from "react-toastify";
 
 export default function LoginPage() {
     const navigate = useNavigate();
@@ -35,7 +36,9 @@ export default function LoginPage() {
         if(res.data['verified']){
           setLoading(false);
           localStorage.setItem('user', JSON.stringify(res.data.user));
-          navigate('/profile');
+          const user = JSON.parse(localStorage.getItem('user'));
+          toast.info('Welcome back, ' + user.name.first);
+          navigate('/');
         }
         else {
           document.getElementById('verification').style.display = 'block';

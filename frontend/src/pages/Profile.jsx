@@ -1,18 +1,17 @@
-import userContext from "../context/user/UserContext"
-import { useContext } from "react"
+import { useNavigate } from 'react-router-dom';
 import avatar from '../assets/avatar.png'
 
 export default function Profile() {
-    const state = useContext(userContext);
+    const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
-        window.location.href = '/login';
+        navigate('/login');
     }
 
     function logoutHandler() {
         localStorage.removeItem('user');
-        window.location.href = '/login';
+        navigate('/login');
     }
 
 

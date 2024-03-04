@@ -2,7 +2,6 @@ import Card from './components/Card'
 import CardSkeleton from './components/CardSkeleton'
 import './jewelery.css'
 import { useEffect, useState } from 'react'
-import { ColorRing } from 'react-loader-spinner'
 
 export default function Jewelery() {
     const [data, setData] = useState([])

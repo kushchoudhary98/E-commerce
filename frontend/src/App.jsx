@@ -1,6 +1,6 @@
 import './App.css'
 import Intro from './components/Intro'
-import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
 
 import Jewelery from './pages/Jewelery'
@@ -37,6 +37,7 @@ function App() {
             <Route path='/login' Component={LoginPage}></Route>
             <Route path='/signup' Component={SignUpPage}></Route>
           </Routes>
+          <ToastContainer />
         </div>
       </BrowserRouter>
     </UserState>

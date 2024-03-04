@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,14 +8,14 @@ export default function CartItem(props) {
 
     const removeItemHandler = async() => {
         const id = toast.loading('Removing from cart.');
-        console.log(props.item.id);
+        console.log(props.item.item.id);
         await axios.put(link,{
-            item: props.item.id,
+            item: props.item.item.id,
             email: user.email
         }).then(res=>{
             console.log('Item removed');
             toast.update(id, {render: "Item Removed", type: "success", isLoading: false});
-            window.location.reload();
+            props.item.setRender(!props.item.render);
         })
     }
 
@@ -24,17 +23,17 @@ export default function CartItem(props) {
         <>
             <li className='py-10 flex gap-4'>
                 <div className='lg:min-w-48 md:min-w-40 sm:min-w-32 min-w-32 max-w-32 flex justify-center items-center rounded-lg bg-zinc-100'>
-                    <img src={props.item.image} className='lg:w-36 md:w-32 sm:w-28 w-[300px] p-2' style={{ mixBlendMode: 'multiply' }}></img>
+                    <img src={props.item.item.image} className='lg:w-36 md:w-32 sm:w-28 w-[300px] p-2' style={{ mixBlendMode: 'multiply' }}></img>
                 </div>
                 <div className='flex flex-col justify-between md:w-auto sm:w-3/4'>
                     <div>
-                        <p className='font-sans m-2 font-semibold text-lg text-gray-800 overflow-hidden sm:h-auto h-[30px]'>{props.item.title}</p>
+                        <p className='font-sans m-2 font-semibold text-lg text-gray-800 overflow-hidden sm:h-auto h-[30px]'>{props.item.item.title}</p>
                         <p className='text-zinc-600 font-sans m-2 flex gap-2'>
                             <span>Color</span>
                             <span className='text-zinc-200 font-thin'>|</span>
                             <span>Large</span>
                         </p>
-                        <p className='m-2 font-semibold'>$<span className='item-price'>{props.item.price}</span></p>
+                        <p className='m-2 font-semibold'>$<span className='item-price'>{props.item.item.price}</span></p>
                     </div>
                     <div className='flex justify-between md:w-[500px] sm:w-[350px]'>
                         <p className='flex items-center m-2 gap-2'>
