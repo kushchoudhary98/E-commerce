@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import userContext  from "../../context/user/UserContext";
 import logo from '../../assets/logo-short.png'
 import bg from '../../assets/login-bg2.jpg'
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
     const navigate = useNavigate();
