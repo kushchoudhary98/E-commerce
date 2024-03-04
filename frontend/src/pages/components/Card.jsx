@@ -34,8 +34,8 @@ export default function Card(props) {
   }
 
   return (
-    <div className='lg:w-[300px] lg:h-[470px] md:w-[270px] md:h-[440px] sm:w-[200px] sm:h-[300px] w-[80vw] h-[150px]'>
-      <div id='card' onClick={quickViewHandlerOpen} className='absolute flex sm:flex-col border-[1px] rounded-md lg:w-[300px] lg:h-[470px] md:w-[270px] md:h-[440px] sm:w-[200px] sm:h-[300px] w-[80vw] h-[150px] cursor-pointer hover:opacity-70'>
+    <div className='lg:w-[300px] lg:h-[470px] md:w-[270px] md:h-[440px] sm:w-[200px] sm:h-[300px] w-[90vw] h-[150px]'>
+      <div id='card' onClick={quickViewHandlerOpen} className='absolute flex sm:flex-col border-[1px] rounded-md lg:w-[300px] lg:h-[470px] md:w-[270px] md:h-[440px] sm:w-[200px] sm:h-[300px] w-[90vw] h-[150px] cursor-pointer hover:opacity-70'>
         <div className='flex justify-center items-center bg-gray-100 lg:w-[300px] lg:h-[300px] md:w-[270px] md:h-[270px] sm:w-[200px] sm:h-[200px] w-[150px] h-[150px]'>
           <img src={props.item["image"]} className='lg:h-[300px] md:h-[270px] sm:h-[200px] h-[150px] sm:p-5 p-3 object-contain' style={{ mixBlendMode: 'multiply' }}></img>
         </div>
@@ -58,7 +58,7 @@ export default function Card(props) {
       </div>
       <div id={props.item.id} className='fixed top-0 left-0 hidden justify-center items-center z-30 w-screen h-screen' style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
         <div className='bg-white flex flex-col sm:flex-row lg:h-[500px] lg:w-[800px] md:h-[500px] md:w-[730px] sm:h-[500px] sm:w-[600px] w-[90vw] opacity-100 rounded-lg'>
-          <div className='flex justify-center items-center bg-gray-100 sm:w-[300px] sm:h-[500px] w-[90vw] h-[25vh] rounded-s-lg'>
+          <div className='flex justify-center items-center bg-gray-100 sm:w-[300px] sm:h-[500px] w-[90vw] h-[25vh] sm:rounded-s-lg rounded-t-lg'>
             <img src={props.item["image"]} className='sm:h-[450px] h-[25vh] p-8 object-contain' style={{ mixBlendMode: 'multiply' }}></img>
           </div>
           <div className='lg:w-[500px] md:w-[450px] sm:w-[350px] pt-8 flex flex-col justify-between'>

@@ -1,11 +1,13 @@
 import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import userContext  from "../../context/user/UserContext";
 import logo from '../../assets/logo-short.png'
 import bg from '../../assets/login-bg2.jpg'
 
 export default function LoginPage() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [verified, setVerified] = useState(false);
     const state = useContext(userContext);
@@ -16,10 +18,8 @@ export default function LoginPage() {
       if(screen.width > 768) return;
       else {
         document.getElementById("hamburger").style.right = "-300px"
-        document.getElementById("ham-close").style.display = "none"
-        document.getElementById("ham-open").style.display = "block"
       }
-    })
+    },[])
 
     const loginHandler = (e) => {
       e.preventDefault();
@@ -35,7 +35,7 @@ export default function LoginPage() {
         if(res.data['verified']){
           setLoading(false);
           localStorage.setItem('user', JSON.stringify(res.data.user));
-          window.location.href = '/profile';
+          navigate('/profile');
         }
         else {
           document.getElementById('verification').style.display = 'block';

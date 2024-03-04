@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import bg from '../../assets/signup-bg.jpg'
 import logo from '../../assets/logo-short.png'
 
 export default function SignUpPage() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const link = "https://e-commerce-backend-uwqv.onrender.com/signup"
@@ -45,7 +46,7 @@ export default function SignUpPage() {
             if (res.data.status == 'success') {
                 setLoading(false);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
-                window.location.href = '/profile';
+                navigate('/profile');
             }
         })
     }
