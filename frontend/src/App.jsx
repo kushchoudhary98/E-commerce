@@ -37,7 +37,7 @@ function App() {
             <Route path='/login' Component={LoginPage}></Route>
             <Route path='/signup' Component={SignUpPage}></Route>
           </Routes>
-          <ToastContainer />
+          <ToastContainer autoClose={5000} className='fixed w-[80vw] sm:w-[350px] right-2 left-auto top-2' />
         </div>
       </BrowserRouter>
     </UserState>

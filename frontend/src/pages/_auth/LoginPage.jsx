@@ -1,14 +1,12 @@
 import { useEffect, useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import userContext  from "../../context/user/UserContext";
 import logo from '../../assets/logo-short.png'
 import bg from '../../assets/login-bg2.jpg'
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [verified, setVerified] = useState(false);
     const state = useContext(userContext);
@@ -28,6 +26,7 @@ export default function LoginPage() {
       const passwd = e.target.password.value;
 
       setLoading(true);
+      const tid = toast.loading("Logging in..");
 
       axios.post(link,{
         username: email,
@@ -37,8 +36,7 @@ export default function LoginPage() {
           setLoading(false);
           localStorage.setItem('user', JSON.stringify(res.data.user));
           const user = JSON.parse(localStorage.getItem('user'));
-          toast.info('Welcome back, ' + user.name.first);
-          navigate('/');
+          window.location.href = '/';
         }
         else {
           document.getElementById('verification').style.display = 'block';

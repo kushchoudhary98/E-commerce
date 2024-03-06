@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import { toast } from 'react-toastify';
 import bg from '../../assets/signup-bg.jpg'
 import logo from '../../assets/logo-short.png'
 
 export default function SignUpPage() {
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
     const link = "https://e-commerce-backend-uwqv.onrender.com/signup"
@@ -26,6 +25,7 @@ export default function SignUpPage() {
         const passwd = e.target.password.value;
 
         setLoading(true);
+        toast.loading("Signing user in...");
 
         axios.post(link, {
             name: {
@@ -46,8 +46,7 @@ export default function SignUpPage() {
                 setLoading(false);
                 localStorage.setItem('user', JSON.stringify(res.data.user));
                 const user = JSON.parse(localStorage.getItem('user'));
-                toast.info('Hello, ' + user.name.first);
-                navigate('/');
+                window.location.href = '/';
             }
         })
     }
