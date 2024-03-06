@@ -1,12 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import avatar from '../assets/avatar.png'
 
 export default function Profile() {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
 
-    if (!user) {
-        navigate('/login');
+    console.log(user)
+
+    if (!localStorage.getItem('user')) {
+        window.location.href = '/login';
     }
 
     function logoutHandler() {

@@ -23,7 +23,7 @@ export default function Card(props) {
 
     if (!JSON.parse(localStorage.getItem('user'))) {
       setAdding(false);
-      navigate('login');
+      navigate('/login');
     }
 
     axios.post(link, {

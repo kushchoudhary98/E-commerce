@@ -1,18 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import CartItem from "./components/CartItem";
 import OrderSummary from "./components/OrderSummary";
 import CartSkeleton from "./components/CartSkeleton";
 
 export default function Cart() {
-    const navigate = useNavigate();
     let link = "https://e-commerce-backend-uwqv.onrender.com/getcart"
     const user = JSON.parse(localStorage.getItem('user'));
     const [render, setRender] = useState(false);
 
     if (!user) {
-        navigate('login');
+        window.location.href = '/login';
     }
 
     const [loading, setLoading] = useState(true);
