@@ -27,18 +27,19 @@ export default function Card(props) {
       toast.error('Please login to add items to cart')
       navigate('/login');
     }
+    else {
+      const tid = toast.loading("Adding item to cart")
 
-    const tid = toast.loading("Adding item to cart")
-
-    axios.post(link, {
-      email: user.email,
-      item: props.item.id,
-      quantity: 1
-    }).then((res) => {
-      toast.update(tid, {render: "Item added", type: "success", isLoading: false});
-      toast.dismiss(tid);
-      setAdding(false)
-    })
+      axios.post(link, {
+        email: user.email,
+        item: props.item.id,
+        quantity: 1
+      }).then((res) => {
+        toast.update(tid, { render: "Item added", type: "success", isLoading: false });
+        toast.dismiss(tid);
+        setAdding(false)
+      })
+    }
   }
 
   return (
